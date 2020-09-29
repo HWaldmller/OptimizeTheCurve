@@ -1407,7 +1407,3 @@ function calculateNew(exportData) {
             }
         }
         */
-
-    </script >
-</body >
-</html >
