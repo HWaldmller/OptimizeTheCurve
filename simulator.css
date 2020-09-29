@@ -1,7 +1,7 @@
 ﻿body {
     -webkit-appearance: none;
-    //font-family: Arial;
-    //font-family: Lato;
+    font-family: Arial;
+    font-family: Lato;
     color: black;
     min-width: 800px;
     width: auto !important;
