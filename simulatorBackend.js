@@ -1235,7 +1235,8 @@ function calculateNew(exportData) {
         writeData[23] = "totalDeceased[0]";
         writeData[24] = "\t";
         writeData[25] = "totalMaxDeceased[0]";
-        writeData[26] = "\t";
+        if (numberPopulations > 1) writeData[26] = "\t";
+        else writeData[26] = "\n";
 
         if (numberPopulations > 1) {
             writeData[27] = "totalMinNeedingIntensiveCare[1]";
@@ -1293,7 +1294,8 @@ function calculateNew(exportData) {
             writeData[26 * numberPopulations * (i + 1) + 23] = totalDeceased[0][i];
             writeData[26 * numberPopulations * (i + 1) + 24] = "\t";
             writeData[26 * numberPopulations * (i + 1) + 25] = totalMaxDeceased[0][i];
-            writeData[26 * numberPopulations * (i + 1) + 26] = "\t";
+            if (numberPopulations > 1) writeData[26 * numberPopulations * (i + 1) + 26] = "\t";
+            else writeData[26 * numberPopulations * (i + 1) + 26] = "\n";
 
             if (numberPopulations > 1) {
                 writeData[26 * numberPopulations * (i + 1) + 27] = totalMinNeedingIntensiveCare[1][i];
