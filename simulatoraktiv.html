@@ -38,7 +38,7 @@
 	<button type = "button" class = "tabDescriptionMarked" id = "buttonPopulation1" style = "visibility: visible"> Population 1 </button>
 	<button type = "button" class = "selectionButton" id = "buttonPopulation2" style = "visibility: hidden"> Population 2 </button>
 </div>
-	<button class="accordion" id="strategyHeadline"> Strategie: Keine Kontakteinschränkung, Eindämmung, Abflachung, Optimierung oder adaptive Triggerung</button>
+	<button class="accordion" id="strategyHeadline"> Zielsetzung im Umgang mit der Pandemie</button>
 	<div class="panel">
 		<div class="row">
 			<div class="leftcolumnradio">
@@ -53,7 +53,7 @@
 				<input type="radio" name="strategy" value="1">
 			</div>
 			<div class="rightcolumnradio" id="strategySuppression">
-				Eindämmung: Maximale Einschränkung der Kontakte zur Minimierung der Zahl der Neuinfektionen
+				Eindämmung: Wir reduzieren die Anzahl der Kontakte so weit wie möglich, um die Anzahl der Neuinfektionen möglichst gering zu halten
 			</div>
 		</div>
 		<div class="row">
@@ -61,7 +61,7 @@
 				<input type="radio" name="strategy" value="2">
 			</div>
 			<div class="rightcolumnradio" id="strategyMitigation">
-				Abflachung: Gleichbleibende Einschränkung der Kontakte ohne Überlastung des Gesundheitswesens
+				Abflachung: Wir berechnen, wie viele täglich gleich-bleibenden Kontakte wir uns erlauben, ohne dass wir das Gesundheitssystem überlasten
 			</div>
 		</div>
 		<div class="row">
@@ -69,7 +69,7 @@
 				<input type="radio" name="strategy" value="3">
 			</div>
 			<div class="rightcolumnradio" id="strategyAdaptiveTriggering">
-				Adaptive Beschränkungen: Starke Kontakteinschränkungen bei Neuinfektionszahlen größer als vorgegebener Grenzwert
+				Adaptive Beschränkungen: Wir beobachten täglich das Infektionsgeschehen. Bei Neuinfektionszahlen größer als ein vorgegebener Grenzwert, schränken wir die Kontakte stark ein. Liegen sie darunter, lassen wir wieder mehr Kontakte zu
 			</div>
 		</div>
 		<div class="row">
@@ -77,7 +77,7 @@
 				<input type="radio" name="strategy" value="4">
 			</div>
 			<div class="rightcolumnradio" id="strategyOptimization">
-				Optimierung: Täglich angepasste, minimale Einschränkung der Kontakte ohne Überlastung des Gesundheitswesens
+				Optimierung: Wir errechnen und erlauben jeden Tag die maximal mögliche Anzahl von Kontakten ohne eine Überlastung des Gesundheitswesens
 			</div>
 		</div>
 		<div class="row">
@@ -125,7 +125,7 @@
 				<input type="number" class="inputField" size="14" id="borderCrossersInput" min="0" max="10000000000" value="415000" step="10000">
 			</div>
 			<div class="rightcolumn" id="borderCrossersText">
-				 <b><span id="borderCrossersOutput"></span> Menschen</b> überqueren täglich die Grenze.
+				 <b><span id="borderCrossersOutput"></span> Menschen</b> überqueren jeden Morgen die Grenze und kehren am Abend wieder zurück.
 			</div>
 		</div>
 		<div class="row">
@@ -161,7 +161,7 @@
 				<input type="number" class="inputField" size="14" id="betaInput" min="0" max="10000000000" value="0.41" step="0.01">
 			</div>
 			<div class="rightcolumn" id="betaText">
-				Der Ausbreitungsfaktor beträgt <b><span id="betaOutput"></span></b>.
+				Der Ausbreitungsfaktor beträgt <b><span id="betaOutput"></span></b> . Er beschreibt, wie viele Menschen ein Ansteckender pro Tag ansteckt, bis er sich isoliert.
 			</div>
 		</div>
 		<div class="row">
@@ -224,7 +224,7 @@
 				<input type="number" class="inputField" size="14" id="durationHospitalizationInput" min="0" max="10000000000" value="8" step="1">
 			</div>
 			<div class="rightcolumn" id="durationHospitalizationText">
-				Der Aufenthalt auf der Intensivstation dauert im Durchschnitt <b><span id="durationHospitalizationOutput"></span> Tag(e)</b>.
+				Der Aufenthalt auf der Intensivstation dauert <b><span id="durationHospitalizationOutput"></span> Tag(e)</b>.
 			</div>
 		</div>
 		<div class="row">
@@ -233,7 +233,7 @@
 				<input type="number" class="inputField" size="14" id="caseMortalityInput" min="0" max="10000000000" value="25" step="1">
 			</div>
 			<div class="rightcolumn" id="caseMortalityText">
-				Das Sterberisiko für Intensiv-pflichtige liegt bei <b><span id="caseMortalityOutput"></span> %</b>.
+				Das Sterberisiko für Intensiv-Pflichtige liegt bei <b><span id="caseMortalityOutput"></span> %</b>.
 			</div>
 		</div>
 		<div class="row">
@@ -278,7 +278,7 @@
 				<input type="number" class="inputField" size="14" id="uncertaintyAntibodyTestInput" min="0" max="10000000000" value="10" step="1">
 			</div>
 			<div class="rightcolumn" id="uncertaintyAntibodyTestText">
-				Die Anzahl der Empfänglichen lässt sich über Antikörpertests bis auf <b><span id="uncertaintyAntibodyTestOutput"></span> %</b> genau bestimmen.
+				Die Anzahl der für COVID-19 Empfänglichen lässt sich über Antikörpertests bis auf <b><span id="uncertaintyAntibodyTestOutput"></span> %</b> genau bestimmen.
 			</div>
 		</div>
 		<div class="row">
@@ -320,7 +320,7 @@
 				<input type="number" class="inputField" size="14" id="lowContactLevelInput" min="0" max="10000000000" value="30" step="1">
 			</div>
 			<div class="rightcolumn" id="lowContactLevelText">
-				In Phasen hoher Kontaktreduktion finden durchschnittlich noch <b><span id="lowContactLevelOutput"></span> %</b> der gewöhnlichen Kontakte statt.
+				In Phasen hoher Kontaktreduktion finden noch <b><span id="lowContactLevelOutput"></span> %</b> der gewöhnlichen Kontakte statt.
 			</div>
 		</div>
 		<div class="row">
@@ -329,7 +329,7 @@
 				<input type="number" class="inputField" size="14" id="highContactLevelInput" min="0" max="10000000000" value="70" step="1">
 			</div>
 			<div class="rightcolumn" id="highContactLevelText">
-				In Phasen geringer Kontaktreduktion finden durchschnittlich noch <b><span id="highContactLevelOutput"></span> %</b> der gewöhnlichen Kontakte statt.
+				In Phasen geringer Kontaktreduktion finden noch <b><span id="highContactLevelOutput"></span> %</b> der gewöhnlichen Kontakte statt.
 			</div>
 		</div>
 		<div class="row">
@@ -356,7 +356,7 @@
 				<input type="number" class="inputField" size="14" id="durationInterventionInput" min="0" max="10000000000" value="180" step="10">
 			</div>
 			<div class="rightcolumn" id="durationInterventionText">
-				Nach <b><span id="durationInterventionOutput"></span> Tag(en)</b> wird der alle Maßnahme inkl. Des besonderen Schutzes für die Gruppe mit hohem Intensiv-Risiko aufgehoben.
+				Nach <b><span id="durationInterventionOutput"></span> Tag(en)</b> werden alle Maßnahmen (ggf. inkl. des besonderen Schutzes für die Gruppe mit hohem Intensiv-Risiko) aufgehoben.
 			</div>
 		</div>
 		<div class="row">
@@ -365,7 +365,7 @@
 				<input type="number" class="inputField" size="14" id="contactLevelAfterInterventionInput" min="0" max="10000000000" value="85" step="1">
 			</div>
 			<div class="rightcolumn" id="contactLevelAfterInterventionText">
-				Nach Beendigung der Maßnahmen treten durchschnittlich <b><span id="contactLevelAfterInterventionOutput"></span> %</b> der gewöhnlichen Kontakte auf.
+				Nach Beendigung der Maßnahmen treten <b><span id="contactLevelAfterInterventionOutput"></span> %</b> der gewöhnlichen Kontakte auf.
 			</div>
 		</div>
 	</div>
@@ -651,11 +651,11 @@
 		var numberSimulationsOutput = document.getElementById("numberSimulationsOutput");
 
 		// graph description definitions
-		var captionFigureA = "Abbildung A - Kapazitäten im Gesundheitswesen";
+		var captionFigureA = "Abbildung A – Kapazitäten im Gesundheitswesen";
 		var legendTime = "Zeit [Tage]";
 		var legendAvailableIntensiveCareUnits = "Vorhandene Plätze auf Intensivstation";
 		var legendRequiredIntensiveCareUnits = "Benötigte Plätze auf Intensivstation";
-		var captionFigureB = "Abbildung B - Infektion und Immunität in der Bevölkerung";
+		var captionFigureB = "Abbildung B – Infektion und Immunität in der Bevölkerung";
 		var legendS = "Empfängliche";
 		var legendI = "Ansteckende";
 		var legendR = "Genesen/Verstorbene";
@@ -667,7 +667,7 @@
 		var noteHerdImmunityNotAlwaysReached = "Herdenimmunität nicht immer erreicht";
 		var captionFigureC = "Abbildung C – Kontakteinschränkung";
 		var legendEffectiveContactReduction = "Umsetzung";
-		var legendAverageEffectiveContactReduction = "14-tägiger Durchschnitt";
+		var legendAverageEffectiveContactReduction = "14-tägiger Mittelwert";
 		var legendDesiredContactReduction = "Vorgabe";
 		var captionFigureD = "Abbildung D – Verstorbene";
 		var legendDeceased = "Verstorbene";
@@ -1967,47 +1967,47 @@
 					simpleLanguage.innerHTML = "leichte Sprache";
 					normalLanguage.innerHTML = "Umgangssprache";
 					scientificLanguage.innerHTML = "wissenschaftliche Sprache";
-					strategyHeadline.innerHTML = "Strategie: Keine Kontakteinschränkung, Eindämmung, Abflachung, Optimierung oder adaptive Triggerung";
+					strategyHeadline.innerHTML = "Zielsetzung im Umgang mit der Pandemie";
 					strategyNoContactReduction.innerHTML = "Keine Kontakteinschränkung";
-					strategySuppression.innerHTML = "Eindämmung: Maximale Einschränkung der Kontakte zur Minimierung der Zahl der Neuinfektionen";
-					strategyMitigation.innerHTML = "Abflachung: Gleichbleibende Einschränkung der Kontakte ohne Überlastung des Gesundheitswesens";
-					strategyAdaptiveTriggering.innerHTML = "Adaptive Beschränkungen: Starke Kontakteinschränkungen bei Neuinfektionszahlen größer als vorgegebener Grenzwert";
-					strategyOptimization.innerHTML = "Optimierung: Täglich angepasste, minimale Einschränkung der Kontakte ohne Überlastung des Gesundheitswesens";
+					strategySuppression.innerHTML = "Eindämmung: Wir reduzieren die Anzahl der Kontakte so weit wie möglich, um die Anzahl der Neuinfektionen möglichst gering zu halten";
+					strategyMitigation.innerHTML = "Abflachung: Wir berechnen, wie viele täglich gleich-bleibenden Kontakte wir uns erlauben, ohne dass wir das Gesundheitssystem überlasten";
+					strategyAdaptiveTriggering.innerHTML = "Adaptive Beschränkungen: Wir beobachten täglich das Infektionsgeschehen. Bei Neuinfektionszahlen größer als ein vorgegebener Grenzwert, schränken wir die Kontakte stark ein. Liegen sie darunter, lassen wir wieder mehr Kontakte zu";
+					strategyOptimization.innerHTML = "Optimierung: Wir errechnen und erlauben jeden Tag die maximal mögliche Anzahl von Kontakten ohne eine Überlastung des Gesundheitswesens";
 					strategyUserSettings.innerHTML = "Eigene Einstellung";
 					optionHeadline.innerHTML = "Berücksichtigung der Risikogruppen";
 					optionNoConsiderationHighRisk.innerHTML = "Keine besondere Berücksichtigung von Risikogruppen";
 					optionSpecialProtectionHighRisk.innerHTML = "Spezieller Schutz für die Gruppe mit hohem Intensiv-Risiko";
 					modelParametersHeadline.innerHTML = "Modellparameter ";
 					populationText.innerHTML = "Die Bevölkerung besteht aus <b><span id =\"populationOutput\"></span> Menschen</b>.";
-					borderCrossersText.innerHTML = " <b><span id =\"borderCrossersOutput\"></span> Menschen</b> überqueren täglich die Grenze.";
+					borderCrossersText.innerHTML = " <b><span id =\"borderCrossersOutput\"></span> Menschen</b> überqueren jeden Morgen die Grenze und kehren am Abend wieder zurück.";
 					initiallyRegisteredCasesText.innerHTML = "Zu Beginn der Simulation sind  <b><span id =\"initiallyRegisteredCasesOutput\"></span> Infektionsfälle</b> registriert worden.";
 					initiallyRegisteredRecoveredText.innerHTML = "Zu Beginn der Simulation sind  <b><span id =\"initiallyRegisteredRecoveredOutput\"></span> Menschen</b> von COVID-19 genesen.";
 					initiallyRegisteredDeceasedText.innerHTML = "Zu Beginn der Simulation sind  <b><span id =\"initiallyRegisteredDeceasedOutput\"></span> Menschen</b> mit COVID-19 verstorben.";
-					betaText.innerHTML = "Der Ausbreitungsfaktor beträgt <b><span id =\"betaOutput\"></span></b>.";
+					betaText.innerHTML = "Der Ausbreitungsfaktor beträgt <b><span id =\"betaOutput\"></span></b> . Er beschreibt, wie viele Menschen ein Ansteckender pro Tag ansteckt, bis er sich isoliert.";
 					gammaText.innerHTML = "Jeden Tag verringert sich die Anzahl der Ansteckenden durch Isolierung um  <b><span id =\"gammaOutput\"></span> %</b>.";
 					seasonalityPeakDateText.innerHTML = "Der jahreszeitbedingte Höhepunkt der Infektionen ereignet sich  <b><span id =\"seasonalityPeakDateOutput\"></span> Tag(e)</b> nach dem Beginn der Simulation.";
 					seasonalityMinPercentageText.innerHTML = "Die niedrigste jahreszeitbedingte Ansteckungsgefahr beträgt <b><span id =\"seasonalityMinPercentageOutput\"></span> %</b> der maximalen.";
 					percentageHighRiskText.innerHTML = " <b><span id =\"percentageHighRiskOutput\"></span> %</b> der Bevölkerung haben ein hohes Intensiv-Risiko.";
 					riskIntensiveCareHighRiskText.innerHTML = "In der Gruppe mit hohem Intensiv-Risiko sind  <b><span id =\"riskIntensiveCareHighRiskOutput\"></span> %</b> der bestätigten Infizierten intensiv-pflichtig.";
 					riskIntensiveCareLowRiskText.innerHTML = "In der Gruppe mit niedrigem Intensiv-Risiko sind  <b><span id =\"riskIntensiveCareLowRiskOutput\"></span> %</b> der bestätigten Infizierten intensiv-pflichtig.";
-					durationHospitalizationText.innerHTML = "Der Aufenthalt auf der Intensivstation dauert im Durchschnitt <b><span id =\"durationHospitalizationOutput\"></span> Tag(e)</b>.";
-					caseMortalityText.innerHTML = "Das Sterberisiko für Intensiv-pflichtige liegt bei <b><span id =\"caseMortalityOutput\"></span> %</b>.";
+					durationHospitalizationText.innerHTML = "Der Aufenthalt auf der Intensivstation dauert <b><span id =\"durationHospitalizationOutput\"></span> Tag(e)</b>.";
+					caseMortalityText.innerHTML = "Das Sterberisiko für Intensiv-Pflichtige liegt bei <b><span id =\"caseMortalityOutput\"></span> %</b>.";
 					complianceHighRiskGroupText.innerHTML = "Die Gruppe mit hohem Intensiv-Risiko beteiligt sich zu <b><span id =\"complianceHighRiskGroupOutput\"></span> %</b> an der besonderen Absicherung.";
 					factorUndercoverageText.innerHTML = "Von  <b><span id =\"factorUndercoverageOutput\"></span> Infizierten</b> wird eine(r) durch die verfolgte Teststrategie erkannt und registriert.";
 					registrationDelayText.innerHTML = "Infizierte werden <b><span id =\"registrationDelayOutput\"></span> Tag(e)</b> nach der Infektion registriert (Inkubationszeit, Testverzug und Meldeverzug).";
 					uncertaintyModelText.innerHTML = "Die Parameter für die Ausbreitungsgeschwindigkeit sind bis auf <b><span id =\"uncertaintyModelOutput\"></span> %</b> genau bekannt.";
-					uncertaintyAntibodyTestText.innerHTML = "Die Anzahl der Empfänglichen lässt sich über Antikörpertests bis auf <b><span id =\"uncertaintyAntibodyTestOutput\"></span> %</b> genau bestimmen.";
+					uncertaintyAntibodyTestText.innerHTML = "Die Anzahl der für COVID-19 Empfänglichen lässt sich über Antikörpertests bis auf <b><span id =\"uncertaintyAntibodyTestOutput\"></span> %</b> genau bestimmen.";
 					uncertaintyRiskIntensiveCareText.innerHTML = "Das Risiko einer Intensivpflicht ist bis auf  <b><span id =\"uncertaintyRiskIntensiveCareOutput\"></span> %</b> genau bekannt.";
 					capacityHeadline.innerHTML = "Kapazität des Gesundheitswesens ";
 					intensiveCareUnitsText.innerHTML = "Zu Beginn der Simulation stehen <b><span id =\"intensiveCareUnitsOutput\"></span> Intensivbetten</b> für die Behandlung von COVID-19 Patient:innen zur Verfügung.";
 					dailyIncreaseIntensiveCareUnitsText.innerHTML = "Täglich werden <b><span id =\"dailyIncreaseIntensiveCareUnitsOutput\"></span> neue Intensivbetten</b> für die Behandlung von COVID-19 Patient:innen geschaffen.";
 					physicalDistancingHeadline.innerHTML = "Kontakteinschränkung (Physical Distancing)";
-					lowContactLevelText.innerHTML = "In Phasen hoher Kontaktreduktion finden durchschnittlich noch <b><span id =\"lowContactLevelOutput\"></span> %</b> der gewöhnlichen Kontakte statt.";
-					highContactLevelText.innerHTML = "In Phasen geringer Kontaktreduktion finden durchschnittlich noch <b><span id =\"highContactLevelOutput\"></span> %</b> der gewöhnlichen Kontakte statt.";
+					lowContactLevelText.innerHTML = "In Phasen hoher Kontaktreduktion finden noch <b><span id =\"lowContactLevelOutput\"></span> %</b> der gewöhnlichen Kontakte statt.";
+					highContactLevelText.innerHTML = "In Phasen geringer Kontaktreduktion finden noch <b><span id =\"highContactLevelOutput\"></span> %</b> der gewöhnlichen Kontakte statt.";
 					thresholdInfectionsText.innerHTML = "Hohe Kontaktreduktion wird umgesetzt, wenn mehr als <b><span id =\"thresholdInfectionsOutput\"></span> neue Fälle pro Woche je 100.000 Menschen</b> auftreten.";
 					uncertaintyContactLevelText.innerHTML = "Die täglichen Kontakte weichen um bis zu <b><span id =\"uncertaintyContactLevelOutput\"></span> %-Punkte</b> von den durchschnittlichen Kontakten ab.";
-					durationInterventionText.innerHTML = "Nach <b><span id =\"durationInterventionOutput\"></span> Tag(en)</b> wird der alle Maßnahme inkl. Des besonderen Schutzes für die Gruppe mit hohem Intensiv-Risiko aufgehoben.";
-					contactLevelAfterInterventionText.innerHTML = "Nach Beendigung der Maßnahmen treten durchschnittlich <b><span id =\"contactLevelAfterInterventionOutput\"></span> %</b> der gewöhnlichen Kontakte auf.";
+					durationInterventionText.innerHTML = "Nach <b><span id =\"durationInterventionOutput\"></span> Tag(en)</b> werden alle Maßnahmen (ggf. inkl. des besonderen Schutzes für die Gruppe mit hohem Intensiv-Risiko) aufgehoben.";
+					contactLevelAfterInterventionText.innerHTML = "Nach Beendigung der Maßnahmen treten <b><span id =\"contactLevelAfterInterventionOutput\"></span> %</b> der gewöhnlichen Kontakte auf.";
 					simulationParametersHeadline.innerHTML = "Simulationsparameter";
 					durationSimulationText.innerHTML = "Es wird der Zeitraum der nächsten <b><span id =\"durationSimulationOutput\"></span> Tage</b> simuliert.";
 					numberSimulationsText.innerHTML = "Für die Statistik werden <b><span id =\"numberSimulationsOutput\"></span> Simulationen</b> durchgeführt.";
@@ -2016,11 +2016,11 @@
 					explanationFigureB.innerHTML = "<b>Abbildung B</b>:</b> Empfänglich (susceptible) sind nach derzeitigem Wissenstand alle bisher nicht Infektiösen (infectious) und nicht Genesenen oder Verstorbenen (removed). Besonders gekennzeichnet ist zum einen der Zeitpunkt, an dem ausreichend Menschen gegen SARS CoV2 immun sind, so dass es zu keinem epidemischen Ausbruch der Krankheit mehr kommt, also die sogenannte Herdenimmunität erreicht ist. Zum anderen der Zeitpunkt, an dem es wieder so wenige Infizierte gibt wie zu Beginn der Simulation.";
 					explanationFigureC.innerHTML = "<b>Abbildung C</b>:</b> Die Grafik zeigt, wie stark die physischen Kontakte an jedem Tag eingeschränkt werden müssen (gelb) und wie gut dies gelingt (blau). 33% bedeutet, dass ein Drittel der gewöhnlichen Kontakte vermieden werden müssen, als einer von drei. Die Abweichung zwischen den beiden Kurven zeigt die Unsicherheit in der Umsetzung der erforderlichen Kontaktzahl und lässt sich über einen Parameter einstellen. Die rote Kurve zeigt den 2-wöchigen Mittelwert der Kontakteinschränkung.";
 					explanationFigureD.innerHTML = "<b>Abbildung D</b>:</b> Wir gehen in Anlehnung an den Lagebericht der RKI vom 12. April 2020 davon aus, dass 26% der intensiv-pflichtigen Patienten versterben, solange die Kapazität an Intensivbetten ausreicht.Für Fälle jenseits der Kapazitätsgrenze rechnen wir mit 100%. Zur Einordnung der Anzahl der Verstorbenen seien folgende Vergleichzahlen genannt: In Deutschland sterben jährlich zwischen 800.000 und 900.000 Menschen, die meisten davon an Kreislauferkrankungen und Krebs. Aber auch etwa 44.000 Menschen sterben jährlich an infektiösen Krankheiten und Krankheiten des Atmungssystems (<a href=\"https://www.rki.de/DE/Content/Gesundheitsmonitoring/Gesundheitsberichterstattung/GBEDownloadsT/sterblichkeit.pdf\">Link</a>). Laut einem Bericht der ZEIT sterben jährlich etwa 120.000 Menschen an den Folgen des Rauchens und etwa 74.000 Menschen an den Folgen von Alkoholkonsum oder an einer Kombination aus Alkohol- und Tabakkonsum (<a href=\"https://www.zeit.de/wissen/gesundheit/2015-05/drogenbericht-dhs-drogen-konsum-deutschland\">Link</a>). An Selbstmord sterben etwa 10.000 Menschen (<a href=\"https://www-genesis.destatis.de/genesis/online?sequenz=tabelleErgebnis&selectionname=23211-0002&sachmerkmal=TODUR1&sachschluessel=TODESURS78&startjahr=1980\">Link</a>). In Verkehrsunfällen sterben etwa 3.000 (<a href=\"https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Verkehrsunfaelle/_inhalt.html\">Link</a>). ";
-					captionFigureA = "Abbildung A - Kapazitäten im Gesundheitswesen";
+					captionFigureA = "Abbildung A – Kapazitäten im Gesundheitswesen";
 					legendTime = "Zeit [Tage]";
 					legendAvailableIntensiveCareUnits = "Vorhandene Plätze auf Intensivstation";
 					legendRequiredIntensiveCareUnits = "Benötigte Plätze auf Intensivstation";
-					captionFigureB = "Abbildung B - Infektion und Immunität in der Bevölkerung";
+					captionFigureB = "Abbildung B – Infektion und Immunität in der Bevölkerung";
 					legendS = "Empfängliche";
 					legendI = "Ansteckende";
 					legendR = "Genesen/Verstorbene";
@@ -2032,7 +2032,7 @@
 					noteHerdImmunityNotAlwaysReached = "Herdenimmunität nicht immer erreicht";
 					captionFigureC = "Abbildung C – Kontakteinschränkung";
 					legendEffectiveContactReduction = "Umsetzung";
-					legendAverageEffectiveContactReduction = "14-tägiger Durchschnitt";
+					legendAverageEffectiveContactReduction = "14-tägiger Mittelwert";
 					legendDesiredContactReduction = "Vorgabe";
 					captionFigureD = "Abbildung D – Verstorbene";
 					legendDeceased = "Verstorbene";
