@@ -1,6 +1,4 @@
 // JavaScript source code
-// copyright: Marc Oliver Wagner
-
 function calculate(exportData) {
     document.body.style.cursor = 'wait';
     var panels = document.getElementsByTagName("*");
@@ -388,8 +386,6 @@ function calculateNew(exportData) {
         }
     }
 
-
-
     repeat = true;
     capacityNeverExceeded = true;
     lastRound = true;
@@ -401,13 +397,6 @@ function calculateNew(exportData) {
     }
 
     console.log(numberSimulations[populationIndex]);
-
-    /*
-    //populationOutput.style.opacity = 0.3;
-    populationInput.style.opacity = 0.3;
-    populationSlider.style.opacity = 0.3;
-    populationText.style.opacity = 0.3;
-    */
 
     // forward calculation
     while (repeat) {
@@ -510,117 +499,97 @@ function calculateNew(exportData) {
                             capacityExceeded = false;
 
                             for (n = 0; n < 5; n++) {
-                                // initiaze prediction, loop over all sub-populations
-                                for (k = 0; k < numberSubPopulations; k++) {
-                                    susceptiblesPrediction[j][k][0] = susceptibles[j][k][i - 1 - registrationDelay[j]];
-                                    infectious[j][k][0] = infectious[j][k][i - 1 - registrationDelay[j]];
-                                    newlyHospitalized[j][k][0] = newlyHospitalized[j][k][i - 1 - registrationDelay[j]];
-                                    hospitalized[j][k][0] = hospitalized[j][k][i - 1 - registrationDelay[j]];
-                                    newlyNeedingIntensiveCare[j][k][0] = newlyNeedingIntensiveCare[j][k][i - 1 - registrationDelay[j]];
-                                    needingIntensiveCare[j][k][0] = needingIntensiveCare[j][k][i - 1 - registrationDelay[j]];
-                                }
-
-                                for (p = 1; p < 2 * registrationDelay[j] + durationHospitalization[j] + 1; p++) {
-
+                                for (p = 0; p < Math.min(registrationDelay[j] + durationHospitalization[j], durationSimulation[j] + zeroPoint - i); p++) {
                                     totalNewlyNeedingIntensiveCare[j][i + p] = 0;
 
 
                                     // loop over all sub-populations
                                     for (k = 0; k < numberSubPopulations; k++) {
 
-                                        // for past, used intended values with max tolerance (worst case scenario)
-                                        if (p < registrationDelay[j]) actualContactReductionPrediction[j][p] = desiredContactReduction[j][i - 1 - registrationDelay[j] + p] - uncertaintyContactLevel[j];
-                                        // evaluate high contact level plus uncertainty. If capacity is exceeded for any model, choose low contact level
-                                        if (p == registrationDelay[j]) actualContactReductionPrediction[j][p] = 100 - highContactLevel[j] - uncertaintyContactLevel[j];
-                                        // for the future, assume that contacts will be reduced again
-                                        if (p > registrationDelay[j]) actualContactReductionPrediction[j][p] = 100 - lowContactLevel[j] - uncertaintyContactLevel[j];
-                                        // limit values to possible range
-                                        if (actualContactReductionPrediction[j][p] < 0) actualContactReductionPrediction[j][p] = 0;
-                                        if (actualContactReductionPrediction[j][p] > 100) actualContactReductionPrediction[j][p] = 100;
-                                        /*
-                                        if (p == 1) {
-                                            susceptibles[j][k][i] = susceptibles[j][k][i - 1 - registrationDelay[j]];
-                                            infectious[j][k][i] = infectious[j][k][i - 1 - registrationDelay[j]];
-                                            removed[j][k][i] = removed[j][k][i - 1 - registrationDelay[j]];
+                                        if (p == 0) {
+                                            actualContactReduction[j][i + p] = 100 - highContactLevel[j] - uncertaintyContactLevel[j];
                                         }
                                         else {
-                                            susceptibles[j][k][i + p - 1] = susceptibles[j][k][i - 1 + p - 1];
-                                            infectious[j][k][i + p - 1] = infectious[j][k][i - 1 + p - 1];
-                                            removed[j][k][i + p - 1] = removed[j][k][i - 1 + p - 1];
+                                            actualContactReduction[j][i + p] = 100 - lowContactLevel[j] - uncertaintyContactLevel[j];
                                         }
-                                        */
 
-                                        susceptiblesPrediction[j][k][p] = susceptiblesPrediction[j][k][p - 1];
-                                        infectiousPrediction[j][k][p] = infectiousPrediction[j][k][p - 1];
-                                        removedPrediction[j][k][p] = removedPrediction[j][k][p - 1];
+                                        if (actualContactReduction[j][i + p] < 0) actualContactReduction[j][i + p] = 0;
+                                        if (actualContactReduction[j][i + p] > 100) actualContactReduction[j][i + p] = 100;
+
+                                        susceptibles[j][k][i + p] = susceptibles[j][k][i - 1 + p];
+                                        infectious[j][k][i + p] = infectious[j][k][i - 1 + p];
+                                        removed[j][k][i + p] = removed[j][k][i - 1 + p];
 
                                         // initialize newly infected individuals to 0
-                                        deltaValuePrediction[j][k][p] = 0;
+                                        deltaValue[j][k][i + p] = 0;
 
                                         // calculate newly infected individuals through transmission from all populations and subpopulations
                                         for (l = 0; l < numberPopulations; l++) {
                                             for (m = 0; m < numberSubPopulations; m++) {
                                                 if (subpopulation[l][m] != 0) {
-                                                    deltaValuePrediction[j][k][p] += (seasonalityMinPercentage[j] + (100 - seasonalityMinPercentage[j]) / 2 + (100 - seasonalityMinPercentage[j]) / 2 * Math.cos((i + p - registrationDelay[j] - zeroPoint - seasonalityPeakDate[j]) / 365 * 2 * Math.PI)) / 100.0
-                                                        * betaMod[n] * susceptiblesPrediction[j][k][p - 1] * contactMatrix[j][k][l][m] * (100 - actualContactReductionPrediction[j][p]) / 100.0 * infectiousPrediction[l][m][p - 1] / subpopulation[l][m];
+                                                    deltaValue[j][k][i + p] += (seasonalityMinPercentage[j] + (100 - seasonalityMinPercentage[j]) / 2 + (100 - seasonalityMinPercentage[j]) / 2 * Math.cos((i + p - registrationDelay[j] - zeroPoint - seasonalityPeakDate[j]) / 365 * 2 * Math.PI)) / 100.0
+                                                        * betaMod[n] * susceptibles[j][k][i - 1 + p] * contactMatrix[j][k][l][m] * (100 - actualContactReduction[j][i + p]) / 100.0 * infectious[l][m][i - 1 + p] / subpopulation[l][m];
                                                 }
                                             }
                                         }
 
                                         // update SIR model
-                                        susceptiblesPrediction[j][k][p] -= deltaValue[j][k][p];
-                                        infectiousPrediction[j][k][p] += deltaValue[j][k][p];
-                                        infectiousPrediction[j][k][p] -= gammaMod[n] / 100.0 * infectious[j][k][p - 1];
-                                        removedPrediction[j][k][p] += gammaMod[n] / 100.0 * infectious[j][k][p - 1];
+                                        susceptibles[j][k][i + p] -= deltaValue[j][k][i + p];
+                                        infectious[j][k][i + p] += deltaValue[j][k][i + p];
+                                        infectious[j][k][i + p] -= gammaMod[n] / 100.0 * infectious[j][k][i - 1 + p];
+                                        removed[j][k][i + p] += gammaMod[n] / 100.0 * infectious[j][k][i - 1 + p];
 
                                         // check for plausibility (number of infectious individuals cannot be lower than 0)
-                                        if (infectiousPrediction[j][k][p] < 0) infectiousPrediction[j][k][p] = 0;
+                                        if (infectious[j][k][i + p] < 0) infectious[j][k][i + p] = 0;
 
                                         // calculate aggregates over sub-populations
-                                        totalSusceptiblePrediction[j][p] += susceptiblesPrediction[j][k][p];
-                                        totalInfectiousPrediction[j][p] += infectiousPrediction[j][k][p];
-                                        totalRemovedPrediction[j][p] += removedPrediction[j][k][p];
-                                        totalDeltaValuePrediction[j][p] += deltaValuePrediction[j][k][p];
+                                        totalSusceptible[j][i + p] += susceptibles[j][k][i + p];
+                                        totalInfectious[j][i + p] += infectious[j][k][i + p];
+                                        totalRemoved[j][i + p] += removed[j][k][i + p];
+                                        totalDeltaValue[j][i + p] += deltaValue[j][k][i + p];
 
                                     }
 
+                                    // initialize values for hospitalized and needing intensive care to previous values
                                     for (k = 0; k < numberSubPopulations; k++) {
-                                        hospitalizedPrediction[j][k][p] = hospitalizedPrediction[j][k][p - 1];
-                                        needingIntensiveCarePrediction[j][k][p] = needingIntensiveCarePrediction[j][k][p - 1];
+                                        hospitalized[j][k][i + p] = hospitalized[j][k][i - 1 + p];
+                                        needingIntensiveCare[j][k][i + p] = needingIntensiveCare[j][k][i - 1 + p];
                                     }
 
                                     // determine number of patients newly needing intensive care and add those to the number of patients needing intensive care
                                     for (k = 0; k < numberSubPopulations; k++) {
                                         if (k == 0) {
-                                            newlyNeedingIntensiveCarePrediction[j][k][p] = deltaValuePrediction[j][k][p - registrationDelay[j]] * riskIntensiveCareLowRisk[j] / 100.0 / factorUndercoverage[j];
+                                            newlyNeedingIntensiveCare[j][k][i + p] = deltaValue[j][k][i + p - registrationDelay[j]] * riskIntensiveCareLowRisk[j] / 100.0 / factorUndercoverage[j];
                                         }
                                         if (k > 0) {
-                                            newlyNeedingIntensiveCarePrediction[j][k][p] = deltaValuePrediction[j][k][p - registrationDelay[j]] * riskIntensiveCareHighRisk[j] / 100.0 / factorUndercoverage[j];
+                                            newlyNeedingIntensiveCare[j][k][i + p] = deltaValue[j][k][i + p - registrationDelay[j]] * riskIntensiveCareHighRisk[j] / 100.0 / factorUndercoverage[j];
                                         }
-                                        totalNewlyNeedingIntensiveCarePrediction[j][p] += newlyNeedingIntensiveCarePrediction[j][k][p];
-                                        needingIntensiveCarePrediction[j][k][p] += newlyNeedingIntensiveCarePrediction[j][k][p];
+                                        totalNewlyNeedingIntensiveCare[j][i + p] += newlyNeedingIntensiveCare[j][k][i + p];
+                                        needingIntensiveCare[j][k][i + p] += newlyNeedingIntensiveCare[j][k][i + p];
                                     }
 
                                     // remove from hospitalized the patients that were admitted at the current time reduced by the defined average length of a hospital stay
                                     for (k = 0; k < numberSubPopulations; k++) {
-                                        hospitalizedPrediction[j][k][p] -= newlyHospitalizedPrediction[j][k][p - durationHospitalization[j]];
-                                        needingIntensiveCarePrediction[j][k][p] -= newlyNeedingIntensiveCarePrediction[j][k][p - durationHospitalization[j]];
+                                        hospitalized[j][k][i + p] -= newlyHospitalized[j][k][i + p - durationHospitalization[j]];
+                                        needingIntensiveCare[j][k][i + p] -= newlyNeedingIntensiveCare[j][k][i + p - durationHospitalization[j]];
                                     }
 
                                     // determine total number of hospitalized and needing intensive care
-                                    totalHospitalizedPrediction[j][p] = 0;
-                                    totalNeedingIntensiveCarePrediction[j][p] = 0;
+                                    totalHospitalized[j][i + p] = 0;
+                                    totalNeedingIntensiveCare[j][i + p] = 0;
                                     for (k = 0; k < numberSubPopulations; k++) {
-                                        totalHospitalizedPrediction[j][p] += hospitalizedPrediction[j][k][p];
-                                        totalNeedingIntensiveCarePrediction[j][p] += needingIntensiveCarePrediction[j][k][p];
+                                        totalHospitalized[j][i + p] += hospitalized[j][k][i + p];
+                                        totalNeedingIntensiveCare[j][i + p] += needingIntensiveCare[j][k][i + p];
                                     }
 
                                     // determine free capacity
-                                    freeCapacityPrediction[j][p] = Math.max(hospitalCapacity[j][i + p - registrationDelay[j]] - totalHospitalizedPrediction[j][p], 0);
+                                    freeCapacity[j][i + p] = Math.max(hospitalCapacity[j][i + p - registrationDelay[j]] - totalHospitalized[j][i + p], 0);
 
                                     // determine fraction of patients that can obtain intensive care
-                                    if (totalNeedingIntensiveCarePrediction[j][p] == 0) fractionIntensiveCarePrediction[j][p] = 1;
-                                    else fractionIntensiveCarePrediction[j][p] = Math.min(freeCapacityPrediction[j][p] / totalNewlyNeedingIntensiveCarePrediction[j][p], 1);
+                                    if (totalNeedingIntensiveCare[j][i + p] == 0) fractionIntensiveCare[j][i + p] = 1;
+                                    else fractionIntensiveCare[j][i + p] = Math.min(freeCapacity[j][i + p] / totalNewlyNeedingIntensiveCare[j][i + p], 1);
+
+
 
                                     // determine what happens to the newly needing intensive care: admission to intensive care or will they die
                                     for (k = 0; k < numberSubPopulations; k++) {
@@ -628,24 +597,24 @@ function calculateNew(exportData) {
                                         deceased[j][k][i + p] = deceased[j][k][i - 1 + p];
 
                                         // use fraction of free capacity to assign mortality rate
-                                        if (k == 0) deceasedPrediction[j][k][p] += deltaValue[j][k][p - registrationDelay[j]] * riskIntensiveCareLowRisk[j] / 100.0 * caseMortality[j] / 100.0 * fractionIntensiveCare[j][p] / factorUndercoverage[j];
-                                        if (k == 0) deceasedPrediction[j][k][p] += deltaValue[j][k][p - registrationDelay[j]] * riskIntensiveCareLowRisk[j] / 100.0 * (1 - fractionIntensiveCare[j][p]) / factorUndercoverage[j];
-                                        if (k > 0) deceasedPrediction[j][k][p] += deltaValue[j][k][p - registrationDelay[j]] * riskIntensiveCareHighRisk[j] / 100.0 * caseMortality[j] / 100.0 * fractionIntensiveCare[j][p] / factorUndercoverage[j];
-                                        if (k > 0) deceasedPrediction[j][k][p] += deltaValue[j][k][p - registrationDelay[j]] * riskIntensiveCareHighRisk[j] / 100.0 * (1 - fractionIntensiveCare[j][p]) / factorUndercoverage[j];
+                                        if (k == 0) deceased[j][k][i + p] += deltaValue[j][k][i + p - registrationDelay[j]] * riskIntensiveCareLowRisk[j] / 100.0 * caseMortality[j] / 100.0 * fractionIntensiveCare[j][i + p] / factorUndercoverage[j];
+                                        if (k == 0) deceased[j][k][i + p] += deltaValue[j][k][i + p - registrationDelay[j]] * riskIntensiveCareLowRisk[j] / 100.0 * (1 - fractionIntensiveCare[j][i + p]) / factorUndercoverage[j];
+                                        if (k > 0) deceased[j][k][i + p] += deltaValue[j][k][i + p - registrationDelay[j]] * riskIntensiveCareHighRisk[j] / 100.0 * caseMortality[j] / 100.0 * fractionIntensiveCare[j][i + p] / factorUndercoverage[j];
+                                        if (k > 0) deceased[j][k][i + p] += deltaValue[j][k][i + p - registrationDelay[j]] * riskIntensiveCareHighRisk[j] / 100.0 * (1 - fractionIntensiveCare[j][i + p]) / factorUndercoverage[j];
 
-                                        newlyHospitalizedPrediction[j][k][p] = newlyNeedingIntensiveCarePrediction[j][k][p] * fractionIntensiveCarePrediction[j][p];
-                                        hospitalizedPrediction[j][k][p] += newlyHospitalizedPrediction[j][k][p];
+                                        newlyHospitalized[j][k][i + p] = newlyNeedingIntensiveCare[j][k][i + p] * fractionIntensiveCare[j][i + p];
+                                        hospitalized[j][k][i + p] += newlyHospitalized[j][k][i + p];
                                     }
 
-                                    totalHospitalizedPrediction[j][p] = 0;
-                                    totalDeceasedPrediction[j][p] = 0;
+                                    totalHospitalized[j][i + p] = 0;
+                                    totalDeceased[j][i + p] = 0;
                                     // determine total numer of hospitalized and deceased for display
                                     for (k = 0; k < numberSubPopulations; k++) {
-                                        totalHospitalizedPrediction[j][p] += hospitalizedPrediction[j][k][p];
-                                        totalDeceasedPrediction[j][p] += deceasedPrediction[j][k][p];
+                                        totalHospitalized[j][i + p] += hospitalized[j][k][i + p];
+                                        totalDeceased[j][i + p] += deceased[j][k][i + p];
                                     }
                                     // check if there is enough place in intensive care
-                                    if (fractionIntensiveCarePrediction[j][p] < 1) {
+                                    if (fractionIntensiveCare[j][i + p] < 1) {
                                         capacityExceeded = true;
 
                                         p = Math.min(registrationDelay[j] + durationHospitalization[j], durationSimulation[j] + zeroPoint - i);
@@ -671,11 +640,6 @@ function calculateNew(exportData) {
                         }
 
                         // add noise to desired contact reduction
-                        /*
-                        if (strategy[j] == 2 && !lastRound)
-                            actualContactReduction[j][i] = desiredContactReduction[j][i] - uncertaintyContactLevel[j];
-                        else
-                        */
                         actualContactReduction[j][i] = desiredContactReduction[j][i] + (Math.random() - 0.5) * uncertaintyContactLevel[j];
 
                         // assure that contact reduction is not < 0 and not > 100
@@ -845,14 +809,12 @@ function calculateNew(exportData) {
         if (hospitalCapacity[populationIndex][i] > maxValueChart[0]) maxValueChart[0] = hospitalCapacity[populationIndex][i];
         if (totalMaxNeedingIntensiveCare[populationIndex][i] > maxValueChart[0]) maxValueChart[0] = totalMaxNeedingIntensiveCare[populationIndex][i];
     }
-    //if (Math.log10(maxValueChart[0]) > 0) maxValueChart[0] = Math.ceil(maxValueChart[0] / Math.pow(10,Math.floor(Math.log10(maxValueChart[0])))) * Math.pow(10,(Math.floor(Math.log10(maxValueChart[0]))));
 
     // determine maximum y value for chart 4
     maxValueChart[1] = 0;
     for (i = 0; i < durationSimulation[populationIndex] + zeroPoint; i++) {
         if (totalMaxDeceased[populationIndex][i] > maxValueChart[1]) maxValueChart[1] = totalMaxDeceased[populationIndex][i];
     }
-    //if (Math.log10(maxValueChart[0]) > 0) maxValueChart[0] = Math.ceil(maxValueChart[0] / Math.pow(10,Math.floor(Math.log10(maxValueChart[0])))) * Math.pow(10,(Math.floor(Math.log10(maxValueChart[0]))));
 
     for (i = 0; i < 2; i++) {
         if (Math.log10(maxValueChart[i]) > 0) maxValueChart[i] = Math.ceil(maxValueChart[i] / Math.pow(10, Math.floor(Math.log10(maxValueChart[i])))) * Math.pow(10, (Math.floor(Math.log10(maxValueChart[i]))));
@@ -1369,41 +1331,3 @@ function calculateNew(exportData) {
         document.body.removeChild(link);
     }
 }
-
-        /*
-        function stepForward() {
-            totalSusceptibles[k]
-            // calculate new number of susceptibles, infectious and removed
-            for (model = 0; model < numberModels; model++) {
-
-                // initialize values
-                totalSusceptibles[k] = 0;
-                totalInfectious[k] = 0;
-                totalRemoved[k] = 0;
-                totalHospitalized[k] = 0;
-                totalDeceased[k] = 0;
-
-                for (i = 0; i < numberPopulations; i++) {
-                    for (j = 0; j < numberSubPopulations; j++) {
-                        susceptibles[i][j][k] = susceptibles[i][j][k - 1];
-                        for (l = 0; l < numberPopulations; l++) {
-                            for (m = 0; m < numberSubPopulations; m++) {
-                                susceptibles[i][j][k] = susceptibles[i][j][k - 1] - beta[i][j][l][m] / relevantPopulationSize[i][j] * susceptibles[i][j][k - 1] * infectious[l][m][k - 1] * (1 - actualContactReduction[k]) * seasonality[k];
-                                infectious[i][j][k] = infectious[i][j][k - 1] + beta[i][j][l][m] / relevantPopulationSize[i][j] * susceptibles[i][j][k - 1] * infectious[l][m][k - 1] * (1 - actualContactReduction[k]) * seasonality[k] - beta * infectious[i][j][k];
-                            }
-                        }
-                        removed[i][j][k] = removed[i][j][k - 1] + beta * infectious[i][j][k];
-                        hospitalized[i][j][k] = hospitalized[i][j][k - 1] + hospitalizationRate[i][j] * removed[i][j][k - registrationDelay];
-                        deceased[i][j][k] = deceased[i][j][k - 1] + mortality[i][j] * hospitalizationRate[i][j] * removed[i][j][k - registrationDelay];
-
-                        // sum up across all populations
-                        totalSusceptibles[k] += susceptibles[i][j][k];
-                        totalInfectious[k] += infectious[i][j][k];
-                        totalRemoved[k] += removed[i][j][k];
-                        totalHospitalized[k] += hospitalized[i][j][k];
-                        totalDeceased[k] += deceased[i][j][k];
-                    }
-                }
-            }
-        }
-        */
