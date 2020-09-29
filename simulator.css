@@ -1,6 +1,6 @@
 ﻿body {
     -webkit-appearance: none;
-    font-family: 'Lato', 'Arial', 'sans-serif';
+    font-family: Lato, Arial, sans-serif;
     color: black;
     min-width: 800px;
     width: auto !important;
