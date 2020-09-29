@@ -1,7 +1,6 @@
 ﻿body {
     -webkit-appearance: none;
-    font-family: Arial;
-    font-family: Lato;
+    font-family: 'Lato', 'Arial', 'sans-serif';
     color: black;
     min-width: 800px;
     width: auto !important;
@@ -246,29 +245,31 @@ input[type="number"] {
     height: 300px;
 }
 
-    .flexItem:before {
-        -webkit-appearance: none;
-        content: '';
-        float: left;
-    }
-
-.clickableLabel {
+.flexItem:before {
     -webkit-appearance: none;
+    content: '';
+    float: left;
+}
+
+    .clickableLabel {
+    font-size: 12px;
+    font-family: 'Lato', 'Arial', 'sans-serif';
+    font-family: Lato;
     border-style: solid;
     border-color: black;
     border-width: 1px;
     border-radius: 4px;
     padding-left: 4px;
     padding-right: 4px;
-    padding-top: 2px;
-    padding-bottom: 3px;
+    padding-top: 1.5px;
+    padding-bottom: 3.5px;
     background-color: ButtonFace;
-    font-size: 12px;
 }
-    .clickableLabel:hover {
-        -webkit-appearance: none;
-        background-color: ButtonHighlight;
-    }
+
+.clickableLabel:hover {
+    -webkit-appearance: none;
+    background-color: ButtonHighlight;
+}
 
 .customizedOption {
     font-size: 12px;
@@ -283,7 +284,7 @@ input[type="number"] {
 }
 
 .menuRow::after {
-    //-webkit-appearance: none;
+    -webkit-appearance: none;
     content: "";
     display: table;
     clear: both;
@@ -298,7 +299,7 @@ input[type="number"] {
     padding: 0px;
 }
 .menuColumnRight {
-    //-webkit-appearance: none;
+    -webkit-appearance: none;
     min-height: 24px;
     float: right;
     width: auto;
