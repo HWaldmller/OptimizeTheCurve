@@ -31,12 +31,12 @@ Wir haben daher mit Wissenschaftlern nach Alternativen gesucht. Die gute Nachric
 In diesem Projekt haben wir die Strategie der gesteuerten Immunisierung unter Berücksichtigung der Risikogruppe noch weiter optimiert, indem wir einen zusätzlichen Sicherheitsfaktor eingebaut haben: Das sogenannte Adaptive Triggering: Während die BürgerInnen, beginnend mit risikoarmen Bevölkerungsgruppen, in mehreren Tranchen aus dem Social Distancing befreit werden, gleichzeitig die Krankenhauskapazitäten eng überwacht werden. Sollten sich ungeplante Engpässe abzeichnen, kann der Prozess unmittelbar verlangsamtwerden. Letztendlich wird so auf berechenbare Weise ein Großteil der Bevölkerung mit dem Durchleben von Covid-19 immun, und kann so die erforderliche Herdenimmunität herstellen. Diese ist nötig, um auch Menschen ausder Risikogruppe wieder die uneingeschränkte Teilnahme am öffentlichen Leben zu ermöglichen. Dies wird mit unserem Modell auch ohne einen Impfstoff möglich. Uns ist bewusst, dass ein marktreifer Impfstoff, die Strategie maßgeblichbeeinflusst und zu neuen Modellen und Strategien führt. Aktuell spricht man allerdings von 12-16 Monaten und hat keine genaue Informationen, was die Sicherheit einer möglichen Impfung betrifft.
 
 Mittels Simulationen und Datenmodellen wurden folgende Fragen bearbeitet: 
-● Modell: Wie kann ein “adaptive triggering” basierend auf Altersgruppen konkret aussehen? Ist die Kurve besser als ein reines Clustering in 2 Gruppen? 
-● Wie können Risikogruppen und deren Familien innerhalb der risikoarmenAltersgruppen geschützt, versorgt und ausreichend betreut werden? 
-● Welches Ergebnis kann man so erreichen? Was sind die Auswirkungen inZahlen? 
-● Welche Reaktanz könnte sich daraus ergeben? (Die einen dürfen/sollen raus, die anderen noch nicht) Wie sieht es mit der Akzeptanz aus? (Ängste, von Risikogruppen, getriggerten Nicht-Risikogruppen und getriggerten Risikogruppen? 
-● Wie können unsere theoretischen Analysen und Simulationstools von Entscheidungsträgern am besten genutzt werden? 
-● Wie können Simulationstools genutzt werden, um der Bevölkerung Maßnahmen zu kommunizieren und zu veranschaulichen?
+</br>● Modell: Wie kann ein “adaptive triggering” basierend auf Altersgruppen konkret aussehen? Ist die Kurve besser als ein reines Clustering in 2 Gruppen? 
+</br>● Wie können Risikogruppen und deren Familien innerhalb der risikoarmenAltersgruppen geschützt, versorgt und ausreichend betreut werden? 
+</br>● Welches Ergebnis kann man so erreichen? Was sind die Auswirkungen inZahlen? 
+</br>● Welche Reaktanz könnte sich daraus ergeben? (Die einen dürfen/sollen raus, die anderen noch nicht) Wie sieht es mit der Akzeptanz aus? (Ängste, von Risikogruppen, getriggerten Nicht-Risikogruppen und getriggerten Risikogruppen? 
+</br>● Wie können unsere theoretischen Analysen und Simulationstools von Entscheidungsträgern am besten genutzt werden? 
+</br>● Wie können Simulationstools genutzt werden, um der Bevölkerung Maßnahmen zu kommunizieren und zu veranschaulichen?
 
 <h3>What it does</h3>
 Eine Basis sind die beiden Teams: Simulation und Daten. Der Simulator solldie Diskussion zahlenmäßig greifbar machen und entmystifizieren.
