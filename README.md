@@ -1,5 +1,5 @@
 <h1>STATUS UPDATE</h1>
-Das Projekt OptimizeTheCurve wurde seit dem ... nicht mehr fortgesetzt. Sie finden den Simulator unter <a href="https://hwaldmller.github.io/optimizethecurve/simulatoraktiv.html">optimizethecurve.de/simulator.html</a>
+Das Projekt OptimizeTheCurve wurde seit dem ... nicht mehr fortgesetzt. Sie finden den Simulator unter <a href="https://hwaldmller.github.io/OptimizeTheCurve/simulatoraktiv.html">optimizethecurve.de/simulator.html</a>
 
 optimizethecurve kann sich seit dem 07.04.2020 über die Aufnahme in das Solution Enabler Program freuen! Der Solution Enabler ist ein Umsetzungsprogramm für Teams mit vielversprechenden Lösungen in Zeiten von Covid-19. Mehr Infos hierzu bitte hier nachlesen: https://wirvsvirushackathon.org/weiterfuehrung-2/
 
