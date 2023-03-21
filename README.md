@@ -1,4 +1,4 @@
-#STATUS UPDATE:
+#STATUS UPDATE
 
 optimizethecurve kann sich seit dem 07.04.2020 über die Aufnahme in das Solution Enabler Program freuen! Der Solution Enabler ist ein Umsetzungsprogramm für Teams mit vielversprechenden Lösungen in Zeiten von Covid-19. Mehr Infos hierzu bitte hier nachlesen: https://wirvsvirushackathon.org/weiterfuehrung-2/
 
