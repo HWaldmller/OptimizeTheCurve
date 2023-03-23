@@ -1,9 +1,9 @@
-<h1>STATUS UPDATE</h1>
-Das Projekt OptimizeTheCurve wurde seit dem ... nicht mehr fortgesetzt. Sie finden den Simulator unter <a href="https://hwaldmller.github.io/OptimizeTheCurve/simulatoraktiv.html">optimizethecurve.de/simulator.html</a>
+<h1>STATUS</h1>
+Das Projekt OptimizeTheCurve wurde seit dem 30.11.2020 nicht mehr fortgesetzt, da die Forschungsfinanzierung endete. Sie finden den Simulator unter <a href="https://hwaldmller.github.io/OptimizeTheCurve/simulatoraktiv.html">optimizethecurve.de/simulator.html</a>
 
-optimizethecurve kann sich seit dem 07.04.2020 über die Aufnahme in das Solution Enabler Program freuen! Der Solution Enabler ist ein Umsetzungsprogramm für Teams mit vielversprechenden Lösungen in Zeiten von Covid-19. Mehr Infos hierzu bitte hier nachlesen: https://wirvsvirushackathon.org/weiterfuehrung-2/
+OptimizeTheCurve konnte sich seit dem 07.04.2020 über die Aufnahme in das Solution Enabler Program freuen! Der Solution Enabler ist ein Umsetzungsprogramm für Teams mit vielversprechenden Lösungen in Zeiten von Covid-19. Mehr Infos hierzu bitte hier nachlesen: https://wirvsvirushackathon.org/weiterfuehrung-2/
 
-Aktuell arbeiten wir unter Hochdruck an unserer Webseite! Wir bitten um einen Moment der Geduld, weitere updates folgen in Kürze auch hier! Allen Unterstützer:Innen bis hierher vielen herzlichen Dank!
+Hier ein paar Informationen des bmbf-geförderten Forschungsprojektes:
 
 <h3>Wie viele profitieren von unserer Idee?</h3>
 Also aktuell 81.453.631 Menschen sowie die Menschen vieler weiterer Länder dabei zu unterstützen die Corona-Krise optimal zu bewältigen. Unser Schwerpunkt ist das anlysieren unterscheidlicher Strategien der gesteuerten Immunisierung, die das bevölkerungsweite Social Distancing ablösen könnten. Unser Ziel ist eine umsetzbare Strategie, die zum einen die Gesundheit der Menschen an erste Stelle stellt und gleichzeitig den volkswirtschaftlichen und privatwirtschaftlichen Schaden minimiert.
@@ -30,13 +30,14 @@ Wir haben daher mit Wissenschaftlern nach Alternativen gesucht. Die gute Nachric
 <h3>Wie wir arbeiten</h3>
 In diesem Projekt haben wir die Strategie der gesteuerten Immunisierung unter Berücksichtigung der Risikogruppe noch weiter optimiert, indem wir einen zusätzlichen Sicherheitsfaktor eingebaut haben: Das sogenannte Adaptive Triggering: Während die BürgerInnen, beginnend mit risikoarmen Bevölkerungsgruppen, in mehreren Tranchen aus dem Social Distancing befreit werden, gleichzeitig die Krankenhauskapazitäten eng überwacht werden. Sollten sich ungeplante Engpässe abzeichnen, kann der Prozess unmittelbar verlangsamtwerden. Letztendlich wird so auf berechenbare Weise ein Großteil der Bevölkerung mit dem Durchleben von Covid-19 immun, und kann so die erforderliche Herdenimmunität herstellen. Diese ist nötig, um auch Menschen ausder Risikogruppe wieder die uneingeschränkte Teilnahme am öffentlichen Leben zu ermöglichen. Dies wird mit unserem Modell auch ohne einen Impfstoff möglich. Uns ist bewusst, dass ein marktreifer Impfstoff, die Strategie maßgeblichbeeinflusst und zu neuen Modellen und Strategien führt. Aktuell spricht man allerdings von 12-16 Monaten und hat keine genaue Informationen, was die Sicherheit einer möglichen Impfung betrifft.
 
-Mittels Simulationen und Datenmodellen wurden folgende Fragen bearbeitet: 
-</br>● Modell: Wie kann ein “adaptive triggering” basierend auf Altersgruppen konkret aussehen? Ist die Kurve besser als ein reines Clustering in 2 Gruppen? 
-</br>● Wie können Risikogruppen und deren Familien innerhalb der risikoarmenAltersgruppen geschützt, versorgt und ausreichend betreut werden? 
-</br>● Welches Ergebnis kann man so erreichen? Was sind die Auswirkungen inZahlen? 
-</br>● Welche Reaktanz könnte sich daraus ergeben? (Die einen dürfen/sollen raus, die anderen noch nicht) Wie sieht es mit der Akzeptanz aus? (Ängste, von Risikogruppen, getriggerten Nicht-Risikogruppen und getriggerten Risikogruppen? 
-</br>● Wie können unsere theoretischen Analysen und Simulationstools von Entscheidungsträgern am besten genutzt werden? 
-</br>● Wie können Simulationstools genutzt werden, um der Bevölkerung Maßnahmen zu kommunizieren und zu veranschaulichen?
+Mittels Simulationen und Datenmodellen wurden folgende Fragen bearbeitet:
+Modell: Wie kann ein “adaptive triggering” basierend auf Altersgruppen konkret aussehen? Ist die Kurve besser als ein reines Clustering in 2 Gruppen? 
+Wie können Risikogruppen und deren Familien innerhalb der risikoarmenAltersgruppen geschützt, versorgt und ausreichend betreut werden?
+Welches Ergebnis kann man so erreichen? Was sind die Auswirkungen inZahlen?
+Welche Reaktanz könnte sich daraus ergeben? (Die einen dürfen/sollen raus, die anderen noch nicht)
+Wie sieht es mit der Akzeptanz aus? (Ängste, von Risikogruppen, getriggerten Nicht-Risikogruppen und getriggerten Risikogruppen? 
+Wie können unsere theoretischen Analysen und Simulationstools von Entscheidungsträgern am besten genutzt werden? 
+Wie können Simulationstools genutzt werden, um der Bevölkerung Maßnahmen zu kommunizieren und zu veranschaulichen?
 
 <h3>What it does</h3>
 Eine Basis sind die beiden Teams: Simulation und Daten. Der Simulator solldie Diskussion zahlenmäßig greifbar machen und entmystifizieren.
@@ -63,8 +64,5 @@ Es ist möglich sich im Internet auszutauschen. Mehr kluge Köpfe, desto mehr gu
 
 Viel über epidemiologische Modelle.
 
-<h3>Built with</h3></br>
-</br>css
-</br>html5
-</br>javascript
-</br>sri
+<h3>Built with</h3>
+css, html5, javascript, sri
